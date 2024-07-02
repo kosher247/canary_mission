@@ -45,7 +45,7 @@ def scrape_canary_mission() -> list:
                 image = page\
                 .locator('xpath=/html/body/div[1]/div[5]/div[5]/main/div/div[2]/div[3]/div[1]/div[1]/img')\
                 .get_attribute('src')
-                last_modified = page.locator('br~ dd').inner_text()
+                last_modified = page.locator('br~ dd').last.inner_text()
     
                 try:
                     processed_socials = process_socials(socials)
