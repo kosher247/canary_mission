@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '0 0 * * *' # This sets the schedule to run daily at midnight UTC
+    - cron: '0 0 * * 1'
 jobs:
   playwright:
     name: 'Playwright Tests'
