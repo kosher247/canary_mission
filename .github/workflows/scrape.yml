@@ -27,6 +27,7 @@ jobs:
         run: python main.py
       - name: Commit and push changes
         run: |
+          git config --global --add safe.directory /__w/canary_mission/canary_mission
           git config --global --add safe.directory /github/workspace
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
