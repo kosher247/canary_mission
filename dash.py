@@ -14,6 +14,7 @@ def clean_data(element):
         return element.replace(',', '').strip()
     else:
         return element
+
 # Load the data from the URL
 url = "https://raw.githubusercontent.com/kosher247/canary_mission/main/canary.json"
 response = requests.get(url)
@@ -65,14 +66,19 @@ def update_members(selected_universities):
     
     members = []
     for _, row in filtered_df.iterrows():
+        social_links = []
+        if 'socials' in row and isinstance(row['socials'], dict):
+            for platform, link in row['socials'].items():
+                social_links.append(html.A(f"{platform}: {link}", href=link, target="_blank", style={'display': 'block'}))
+
         members.append(html.Div([
             html.Img(src=row['image'], style={'height':'100px'}),
             html.P(f"Name: {row['name']}"),
+            html.Div(social_links),
             html.A("Profile", href=row['url'], target="_blank")
         ], style={'border':'1px solid #ddd', 'padding':'10px', 'margin':'10px'}))
     
     return members
-
 # Run the app without debug mode
 if __name__ == '__main__':
     app.run_server(debug=False)
