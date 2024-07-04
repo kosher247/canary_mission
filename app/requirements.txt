@@ -1,3 +1,2 @@
 pandas
 dash
-dash-to-static
