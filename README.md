@@ -9,7 +9,7 @@
 
 # Accessing this data
 
-Data is present in [canary.json](https://github.com/kosher247/canary_mission/blob/main/canary.json) and is updated weekly.
+Data is present in [canary.json](https://github.com/kosher247/canary_mission/blob/main/canary.json) and is updated bi-weekly.
 
 # Similar Resources 
 
