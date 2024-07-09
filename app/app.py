@@ -1,3 +1,4 @@
+
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
@@ -14,6 +15,17 @@ def clean_data(element):
         return element.replace(',', '').strip()
     else:
         return element
+
+def render_socials(socials):
+    social_links = []
+    if socials == {}:  # If no valid social links were found, show a placeholder
+        social_links.append(html.P("No social links available"))
+    else:
+        for network, url in socials.items():
+            social_links.append(html.A(network, href=url, style={'margin-right': '10px'}))
+
+    return html.Div(social_links)
+
 # Load the data from the URL
 url = "https://raw.githubusercontent.com/kosher247/canary_mission/main/canary.json"
 response = requests.get(url)
@@ -23,7 +35,7 @@ data = response.json()
 cleaned_data = [clean_data(item) for item in data]
 
 # Flatten the cleaned JSON data
-df = pd.json_normalize(cleaned_data)
+df = pd.json_normalize(cleaned_data,max_level=0)
 
 
 # Extract unique university-employer values
@@ -68,11 +80,12 @@ def update_members(selected_universities):
         members.append(html.Div([
             html.Img(src=row['image'], style={'height':'100px'}),
             html.P(f"Name: {row['name']}"),
-            html.A("Profile", href=row['url'], target="_blank")
-        ], style={'border':'1px solid #ddd', 'padding':'10px', 'margin':'10px'}))
+            html.A("Profile", href=row['url']),
+            render_socials(row['socials']),
+        ], style={'border':'1px solid #ddd', 'padding':'10px', 'margin':'10px', 'background': '#ddd'}))
 
     return members
 
 # Run the app without debug mode
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
