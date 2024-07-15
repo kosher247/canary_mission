@@ -1,9 +1,9 @@
 name: Scrape Data
 on:
-  schedule:
+ push:
+    branches: ["main"]
+ schedule:
     - cron: '0 0 * * 1,4'
-  push:
-    - branches: ['main']
 jobs:
   playwright:
     name: 'Scrape Data'
