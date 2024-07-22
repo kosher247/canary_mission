@@ -88,4 +88,4 @@ def update_members(selected_universities):
 
 # Run the app without debug mode
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port = 4000)
