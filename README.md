@@ -11,6 +11,6 @@
 
 Data is present in [canary.json](https://github.com/kosher247/canary_mission/blob/main/canary.json) and is updated bi-weekly.
 
-# Similar Resources 
+# Additional/Similar Resources 
 
-[COMING SOON]
+- Deployed Dash App: [https://canary-mission.onrender.com/](https://canary-mission.onrender.com/) basic explorer app. Right now in infancy.
