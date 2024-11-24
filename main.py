@@ -41,8 +41,8 @@ def scrape_canary_mission() -> list:
                 time.sleep(2)
                 name = page.locator("h1").inner_text()
                 socials = page.locator("b+ a , b").all_inner_texts()
-                university = page.locator('dl:nth-child(2) span').all_inner_texts()
-                orgs = page.locator('dl+ dl dd :nth-child(1)').all_inner_texts()
+                university = page.locator('dd~ dd span').all_inner_texts()
+                orgs = page.locator('.data-section2 a').all_inner_texts()
                 image = page\
                 .locator('xpath=//*[contains(concat( " ", @class, " " ), concat( " ", "image", " " ))]')\
                 .get_attribute('src')
