@@ -43,7 +43,7 @@ def scrape_canary_mission() -> list:
                 socials = page.locator("b+ a , b").all_inner_texts()
                 university = page.locator('dl:nth-child(2) span').all_inner_texts()
                 image = page\
-                .locator('xpath=/html/body/div[1]/div[5]/div[5]/main/div/div[2]/div[3]/div[1]/div[1]/img')\
+                .locator('xpath=//*[contains(concat( " ", @class, " " ), concat( " ", "image", " " ))]')\
                 .get_attribute('src')
                 last_modified = page.locator('br~ dd').last.inner_text()
     
