@@ -32,7 +32,7 @@ def scrape_canary_mission() -> list:
                 time.sleep(1)
     
             # Get all elements matching the XPath
-            elements = page.query_selector_all('//*[contains(concat( " ", @class, " " ), concat( " ", "name", " " ))]/a')
+            elements = page.query_selector_all('.hover\:bg-gray-100')
             hrefs = [element.get_attribute('href') for element in elements]
             urls = ['https://canarymission.org' + href for href in hrefs]
     
