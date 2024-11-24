@@ -18,7 +18,7 @@ def scrape_canary_mission() -> list:
         browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
         
-        groups = ['students', 'professors', 'professionals']
+        groups = ['students', 'professors', 'professionals','medical']
         processed_json = []
         
         for group in groups:
@@ -42,6 +42,7 @@ def scrape_canary_mission() -> list:
                 name = page.locator("h1").inner_text()
                 socials = page.locator("b+ a , b").all_inner_texts()
                 university = page.locator('dl:nth-child(2) span').all_inner_texts()
+                orgs = page.locator('.data-section2 a').all_inner_texts()
                 image = page\
                 .locator('xpath=//*[contains(concat( " ", @class, " " ), concat( " ", "image", " " ))]')\
                 .get_attribute('src')
@@ -58,6 +59,7 @@ def scrape_canary_mission() -> list:
                   'group': group, 
                   'url': url,
                   'university-employer':university, 
+                  'orgs': orgs,
                   'socials': processed_socials,
                   'last-modified':last_modified
                   }
